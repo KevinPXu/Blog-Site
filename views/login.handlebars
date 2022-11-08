@@ -1,22 +1,62 @@
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Username</label>
-    <input
-      type="email"
-      class="form-control"
-      id="exampleInputEmail1"
-      aria-describedby="emailHelp"
-      placeholder="Enter Username"
-    />
+<div class="row">
+  <div class="col-md-6">
+    <h2>Login</h2>
+    <form class="form login-form">
+      <div class="form-group">
+        <label for="username-login">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username-login"
+          aria-describedby="usernameHelp"
+          placeholder="Enter Username"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password-login">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password-login"
+          placeholder="Password"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        id="loginBtn"
+      >Submit</button>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input
-      type="password"
-      class="form-control"
-      id="exampleInputPassword1"
-      placeholder="Password"
-    />
+  <div class="col-md-6">
+    <h2>Signup</h2>
+    <form class="form signup-form">
+      <div class="form-group">
+        <label for="username-signup">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username-signup"
+          aria-describedby="usernameHelp"
+          placeholder="Enter Username"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password-signup">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password-signup"
+          placeholder="Password"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        id="signupBtn"
+      >Submit</button>
+    </form>
   </div>
-  <button type="submit" class="btn btn-primary" id="loginBtn">Submit</button>
-</form>
+</div>
+
+<script src="./js/login.js"></script>
