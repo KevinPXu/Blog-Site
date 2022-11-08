@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post } = require("../models/posts");
+const { Post } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -14,6 +14,10 @@ router.get("/", async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+router.get("/login", (req, res) => {
+  res.render("login");
 });
 
 module.exports = router;
