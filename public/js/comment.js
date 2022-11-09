@@ -1,6 +1,6 @@
 const newCommentHandler = async (e) => {
   e.preventDefault();
-
+  console.log("hello");
   //retrieves the current url of the page
   const url = window.location.href;
 
@@ -8,9 +8,9 @@ const newCommentHandler = async (e) => {
   const id = url.substring(url.lastIndexOf("/") + 1);
   const text = document.querySelector("#add-comment").value.trim();
 
-  console.log(title);
+  console.log(text);
   if (text) {
-    const res = await fetch(`/comment`, {
+    const res = await fetch(`/api/comment`, {
       method: "POST",
       body: JSON.stringify({ text, post_id: id }),
       headers: {
@@ -19,6 +19,7 @@ const newCommentHandler = async (e) => {
     });
 
     if (res.ok) {
+      console.log(res);
       document.location.reload();
     } else {
       alert("Failed to create comment");
@@ -27,5 +28,5 @@ const newCommentHandler = async (e) => {
 };
 
 document
-  .querySelector("#submit-comment")
+  .querySelector(".add-comment")
   .addEventListener("submit", newCommentHandler);

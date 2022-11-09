@@ -81,16 +81,8 @@ router.get("/dashboard/edit/:id", auth, async (req, res) => {
 
 router.get("/post/:id", auth, async (req, res) => {
   try {
-    const postData = await Post.findAll({
-      where: {
-        id: req.params.id,
-      },
-      include: [
-        {
-          model: User,
-          attributes: ["username"],
-        },
-      ],
+    const postData = await Post.findByPk(req.params.id, {
+      include: [{ model: User, attributes: ["username"] }],
     });
 
     const commentData = await Comment.findAll({
@@ -105,10 +97,10 @@ router.get("/post/:id", auth, async (req, res) => {
       ],
     });
 
-    const post = postData.map((post) => post.get({ plain: true }));
+    const post = postData.get({ plain: true });
     const comment = commentData.map((comment) => comment.get({ plain: true }));
-    console.log(`post: ${postData}`);
-    console.log(`comment: ${commentData}`);
+    console.log(post);
+    console.log(comment);
 
     res
       .status(200)
