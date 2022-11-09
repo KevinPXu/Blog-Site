@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
+//post route to create a new user
 router.post("/", async (req, res) => {
   try {
     console.log(req.body.username);
@@ -9,7 +10,7 @@ router.post("/", async (req, res) => {
       password: req.body.password,
     });
 
-    console.log(userData);
+    //saves the users session information to a cookie
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -21,12 +22,13 @@ router.post("/", async (req, res) => {
   }
 });
 
+//post route to allow the user to login to the site based on the users username and password
 router.post("/login", async (req, res) => {
   try {
+    //checks the users username
     const userData = await User.findOne({
       where: { username: req.body.username },
     });
-    console.log(userData);
     if (!userData) {
       res
         .status(400)
@@ -34,6 +36,7 @@ router.post("/login", async (req, res) => {
       return;
     }
 
+    //validates the users password to make sure the plaintext is the same as the hash
     const validPassword = await userData.checkPassword(req.body.password);
     console.log(validPassword);
     if (!validPassword) {
@@ -43,6 +46,7 @@ router.post("/login", async (req, res) => {
       return;
     }
 
+    //saves the login session to a cookie
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -54,6 +58,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
+//allows the user to logout by removing the session from the cookie
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

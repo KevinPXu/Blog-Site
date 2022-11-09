@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
 const auth = require("../utils/authenticate");
 
+//get route for the home page which renders all posts that are already on the page and by which user
 router.get("/", async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -13,6 +14,7 @@ router.get("/", async (req, res) => {
       ],
     });
 
+    //obtains the raw formatted JSON from the sequelize methods
     const posts = postData.map((post) => post.get({ plain: true }));
     console.log(posts);
 
@@ -25,6 +27,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// a get route that brings the user to their own dashboard which will load all posts they have created 
 router.get("/dashboard", auth, async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -39,6 +42,7 @@ router.get("/dashboard", auth, async (req, res) => {
       ],
     });
 
+    //obtains the raw formatted JSON from the sequelize methods
     const posts = postData.map((post) => post.get({ plain: true }));
     console.log(posts);
 
@@ -51,6 +55,7 @@ router.get("/dashboard", auth, async (req, res) => {
   }
 });
 
+//get rout that allows the user to create a new post by rendering a new post form
 router.get("/dashboard/create", auth, async (req, res) => {
   try {
     res.status(200).render("newPost", { loggedIn: req.session.logged_in });
@@ -60,6 +65,7 @@ router.get("/dashboard/create", auth, async (req, res) => {
   }
 });
 
+//get route that allows the user to edit an existing post they created by rendering a new edit form
 router.get("/dashboard/edit/:id", auth, async (req, res) => {
   try {
     const postData = await Post.findOne({
@@ -68,8 +74,8 @@ router.get("/dashboard/edit/:id", auth, async (req, res) => {
       },
     });
 
+    //obtains the raw formatted JSON from the sequelize methods
     const post = postData.get({ plain: true });
-    console.log(post);
     res
       .status(200)
       .render("editPost", { post, loggedIn: req.session.logged_in });
@@ -79,6 +85,7 @@ router.get("/dashboard/edit/:id", auth, async (req, res) => {
   }
 });
 
+//gets a post by their own id as well as all the comments associated with it
 router.get("/post/:id", auth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -97,10 +104,9 @@ router.get("/post/:id", auth, async (req, res) => {
       ],
     });
 
+    //obtains the raw formatted JSON from the sequelize methods
     const post = postData.get({ plain: true });
     const comment = commentData.map((comment) => comment.get({ plain: true }));
-    console.log(post);
-    console.log(comment);
 
     res
       .status(200)
@@ -111,6 +117,7 @@ router.get("/post/:id", auth, async (req, res) => {
   }
 });
 
+//gets the login form and renders it to the page
 router.get("/login", (req, res) => {
   res.render("login");
 });

@@ -1,9 +1,12 @@
+//function to handle login information
 const loginFormHandler = async (e) => {
   e.preventDefault();
 
+  //selectors for the login side of the page
   const username = document.querySelector("#username-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
-  console.log(username);
+
+  //checks that both username and password have content then runs a post call to /api/user/login
   if (username && password) {
     const res = await fetch("/api/user/login", {
       method: "POST",
@@ -11,6 +14,7 @@ const loginFormHandler = async (e) => {
       headers: { "Content-Type": "application/json" },
     });
 
+    //if the response is 200 then redirect the user to their dashboard
     if (res.ok) {
       document.location.replace("/dashboard");
     } else {
@@ -19,13 +23,16 @@ const loginFormHandler = async (e) => {
   }
 };
 
+//function to handle signup information
 const signupFormHandler = async (e) => {
   e.preventDefault();
 
+  //selectors for the signup side of the page
   const username = document.querySelector("#username-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
   console.log(username);
 
+  //checks that both username and password have content then runs a post call to /api/user
   if (username && password) {
     const res = await fetch("/api/user", {
       method: "POST",
@@ -33,6 +40,7 @@ const signupFormHandler = async (e) => {
       headers: { "Content-Type": "application/json" },
     });
 
+    //if the response is 200 then redirect the user to their dashboard
     if (res.ok) {
       document.location.replace("/dashboard");
     } else {
@@ -41,6 +49,7 @@ const signupFormHandler = async (e) => {
   }
 };
 
+//event listeners for both forms
 document
   .querySelector(".login-form")
   .addEventListener("submit", loginFormHandler);
