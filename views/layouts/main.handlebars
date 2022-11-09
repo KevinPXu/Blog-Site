@@ -20,14 +20,11 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="/dashboard">Dashboard</a>
                 </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="/login">Login</a>
+                <li class="nav-item {{#unless loggedIn}}active{{/unless}}">
+                  <a class="nav-link {{#if loggedIn}}disabled{{/if}}" href="/login">Login</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{#if loggedIn}}active{{/if}}">
                   <a class="nav-link {{#unless loggedIn}}disabled{{/unless}}" href="" id="logoutBtn">Logout</a>
-                </li>
-                <li class="nav-item ">
-                  {{#if loggedIn}}<h5>logged in</h5>{{/if}}
                 </li>
               </ul>
             </div>

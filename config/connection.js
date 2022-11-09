@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 require("dotenv").config();
-
+//creates a connection between the environmental variables and sequelize to login onto the mysql database which hides our sensitive information
 const sequelize = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)
   : new Sequelize(
