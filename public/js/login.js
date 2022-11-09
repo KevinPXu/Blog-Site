@@ -3,7 +3,7 @@ const loginFormHandler = async (e) => {
 
   const username = document.querySelector("#username-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
-
+  console.log(username);
   if (username && password) {
     const res = await fetch("/api/user/login", {
       method: "POST",
@@ -34,7 +34,7 @@ const signupFormHandler = async (e) => {
     });
 
     if (res.ok) {
-      //document.location.replace("/dashboard");
+      document.location.replace("/dashboard");
     } else {
       alert(res.statusText);
     }

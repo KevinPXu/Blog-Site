@@ -1,12 +1,11 @@
-<div class="card mb-3">
+<a href="/api/comment/{{id}}" class="card mb-3">
   <div class="card-header">
     {{title}}
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-1">
       <p>{{text}}</p>
-      <footer class="blockquote-footer">Someone famous in
-        <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer">{{user.username}}</footer>
     </blockquote>
   </div>
-</div>
+</a>
