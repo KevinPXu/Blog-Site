@@ -20,7 +20,7 @@
 
 ## Summary
 
-This project was used to obtain a better understanding of using a MVC architectural file format. We created Models through using the Sequelize ORM, created routes through the controller file and using express.js to create RESTful routes, and used handlebars to view frontend HTML and to generate a dynamic front end. We also used express sessions and utilized cookies to ensure logins were able to persist as well as protected user information by hashing the users password. We also were able to protect our own information by utilizing environmental variables.
+This project was created to obtain a better understanding of using a MVC architectural file format. We created Models through using the Sequelize ORM, created routes through the controller file and using express.js to create RESTful routes, and used handlebars to view frontend HTML and to generate a dynamic front end. We also used express sessions and utilized cookies to ensure logins were able to persist as well as protected user information by hashing the users password. We also were able to protect our own information by utilizing environmental variables.
 
 ## Demonstration
 
