@@ -1,7 +1,6 @@
 //function to handle new comments for a specific post
 const newCommentHandler = async (e) => {
   e.preventDefault();
-  console.log("hello");
   //retrieves the current url of the page
   const url = window.location.href;
 

@@ -12,7 +12,6 @@ const editPostHandler = async (e) => {
   const title = document.querySelector("#editPost-title").value.trim();
   const text = document.querySelector("#editPost-text").value.trim();
 
-  console.log(title);
   //checks to make sure that title and text are not undefined and fetches a PUT method from the server
   if (title && text) {
     const res = await fetch(`/api/post/${id}`, {

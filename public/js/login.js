@@ -30,7 +30,6 @@ const signupFormHandler = async (e) => {
   //selectors for the signup side of the page
   const username = document.querySelector("#username-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
-  console.log(username);
 
   //checks that both username and password have content then runs a post call to /api/user
   if (username && password) {
