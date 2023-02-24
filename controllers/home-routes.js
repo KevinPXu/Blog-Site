@@ -72,7 +72,6 @@ router.get('/dashboard/edit/:id', auth, async (req, res) => {
       where: {
         id: req.params.id,
       },
-      include: Comment,
     });
 
     //obtains the raw formatted JSON from the sequelize methods
@@ -88,16 +87,22 @@ router.get('/dashboard/edit/:id', auth, async (req, res) => {
 
 router.get('/dashboard/view/:id', auth, async (req, res) => {
   try {
-    const commentData = await Post.findOne({
+    const postData = await Post.findOne({
       where: {
         id: req.params.id,
       },
+      include: {
+        model: Comment,
+        attributes: ['id', 'text'],
+      },
     });
 
-    const comment = commentData.get({ plain: true });
+    const post = postData.get({ plain: true });
+    const comment = post.comments;
+    console.log(comment);
     res
       .status(200)
-      .render('viewPost', { comment, loggedIn: req.session.logged_in });
+      .render('viewPost', { post, comment, loggedIn: req.session.logged_in });
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
