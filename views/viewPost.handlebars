@@ -1,3 +1,9 @@
-{{#each comment as |comment|}}
-{{>dashboardComments}}
-{{/each}}
+
+<div class="jumbotron">
+    <h1 class="display-5">{{post.title}}</h1>
+    <div class="lead">{{post.text}}</div>
+    <hr class="my-4">
+    {{#each comment as |comment|}}
+    {{>dashboardComments}}
+    {{/each}}
+</div>

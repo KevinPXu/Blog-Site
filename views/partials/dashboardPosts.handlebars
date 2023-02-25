@@ -1,4 +1,4 @@
-<div class='card mb-3 mx-2'>
+<div class='card mb-3 mx-auto w-50'>
   <a href='/dashboard/edit/{{id}}' class='card-header'>
     {{title}}
   </a>
@@ -6,6 +6,10 @@
     <blockquote class='blockquote mb-1'>
       <p>{{format_date createdAt}}</p>
     </blockquote>
-    <a href='/dashboard/view/{{id}}' class='btn btn-primary' id='view-comments'>View Comments</a>
+    <a
+      href='/dashboard/view/{{id}}'
+      class='btn btn-primary'
+      id='view-comments'
+    >View Comments</a>
   </div>
 </div>
