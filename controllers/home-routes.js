@@ -99,7 +99,6 @@ router.get('/dashboard/view/:id', auth, async (req, res) => {
 
     const post = postData.get({ plain: true });
     const comment = post.comments;
-    console.log(comment);
     res
       .status(200)
       .render('viewPost', { post, comment, loggedIn: req.session.logged_in });

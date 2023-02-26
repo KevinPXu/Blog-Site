@@ -1,6 +1,11 @@
 <div class='card'>
   <div class='card-body'>
-    <div>{{text}}</div>
-    <a class='btn btn-danger text-white my-2' id="delete-comment">delete comment</a>
+    <div id='comment-text'>{{text}}</div>
+    <button
+      type='submit'
+      class='btn btn-danger text-white my-2'
+      data-id={{id}}
+      id='delete-comment'
+    >delete comment</button>
   </div>
 </div>

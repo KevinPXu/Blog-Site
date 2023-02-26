@@ -32,7 +32,6 @@ const editPostHandler = async (e) => {
 
 //handles the delete button on the edit post page
 const deletePostHandler = async (e) => {
-  e.preventDefault();
 
   //retrieves the current url of the page
   const url = window.location.href;

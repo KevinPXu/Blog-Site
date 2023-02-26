@@ -5,16 +5,16 @@ const newCommentHandler = async (e) => {
   const url = window.location.href;
 
   //obtains the current URL to pass into the fetch request
-  const id = url.substring(url.lastIndexOf("/") + 1);
-  const text = document.querySelector("#add-comment").value.trim();
-  
+  const id = url.substring(url.lastIndexOf('/') + 1);
+  const text = document.querySelector('#add-comment').value.trim();
+
   //checks to make sure text has content and then calls a fetch to /api/comment route to post the comment
   if (text) {
     const res = await fetch(`/api/comment`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({ text, post_id: id }),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
 
@@ -23,12 +23,14 @@ const newCommentHandler = async (e) => {
       //reloads the page after each function call to render the new comment to the page
       document.location.reload();
     } else {
-      alert("Failed to create comment");
+      alert('Failed to create comment');
     }
   }
 };
 
 //event listener for form
 document
-  .querySelector(".add-comment")
-  .addEventListener("submit", newCommentHandler);
+  .querySelector('.add-comment')
+  .addEventListener('submit', newCommentHandler);
+
+
